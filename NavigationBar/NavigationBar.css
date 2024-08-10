@@ -1,0 +1,200 @@
+/* Basic reset and styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Navigation styles */
+nav {
+    /* background-color: #333; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    /* Center content horizontally */
+}
+
+/* Hamburger icon styles */
+.menu-toggle {
+
+    display: none;
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    /* Width of hamburger icon */
+    height: 25px;
+    /* Height of hamburger icon */
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    /* Height of each bar */
+    background-color: black;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+
+}
+
+/* Transform to cross when active */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 10px;
+    /* Adjust position */
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 10px;
+    /* Adjust position */
+}
+
+/* Default styles for menu items */
+.menu-items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.menu-item {
+    position: relative;
+    margin: 0 5px;
+}
+
+.menu-item a,
+.dropbtn {
+    color: #e73f00;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    cursor: pointer;
+
+}
+
+.menu-item a:hover,
+.dropbtn:hover {
+    /* background-color: #575757; */
+    color: #fd9e79;
+}
+
+/* Dropdown menu styles */
+.dropbtn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.active .dropbtn i {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-content div {
+    padding: 12px 0;
+}
+
+.dropdown-content div a {
+    padding: 12px 16px;
+    display: block;
+    color: white;
+}
+
+.dropdown-content div a:hover {
+    background-color: #575757;
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        /* Stack items vertically */
+    }
+
+    .menu-toggle {
+        display: block;
+        /* Show hamburger icon */
+        margin-bottom: 10px;
+        /* Space between the icon and menu items */
+
+    }
+
+    .menu-items {
+        display: none;
+        /* Hide menu items initially */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #a7d9de;
+        position: absolute;
+        top: 50px;
+        /* Adjust top position to avoid overlap with the hamburger icon */
+        left: 0;
+        z-index: 2;
+        /* Ensure the menu is above other content */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-items.active {
+        display: flex;
+        /* Show menu items when the menu is active */
+    }
+
+    .menu-item {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-item a,
+    .dropbtn {
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+        color: black;
+    }
+
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .dropdown-content div {
+        padding: 10px 0;
+    }
+}
